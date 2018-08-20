@@ -6,7 +6,7 @@ import com.platzi.model.SocialMedia;
 
 public interface SocialMediaDao {
 	
-	void saveCourse(SocialMedia socialMedia);
+	void saveSocialMedia(SocialMedia socialMedia);
 	
 	List<SocialMedia>findAllTeachers();
 	
