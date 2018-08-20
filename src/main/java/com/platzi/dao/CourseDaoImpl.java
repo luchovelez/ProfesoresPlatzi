@@ -50,4 +50,10 @@ public class CourseDaoImpl extends  AbstractSession implements CourseDao {
 				.setParameter("name", name).uniqueResult();
 	}
 
+	@Override
+	public List<Course> findByIdTeacher(Long idTeacher) {
+		// TODO Auto-generated method stub
+		return getSession().createQuery("from Course c join c.teacher t where t.idTeacher = :idTeacher").setParameter("idTeacher", idTeacher).list();
+	}
+
 }

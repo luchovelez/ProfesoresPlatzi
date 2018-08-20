@@ -14,8 +14,10 @@ public interface CourseDao {
 	
 	void updateCourse(Course course);
 	
-	Course findById(Long idTeacher);
+	Course findById(Long idcourse);
 	
 	Course findByName(String name);
+	
+	List <Course> findByIdTeacher(Long idTeacher);
 
 }

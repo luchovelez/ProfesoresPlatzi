@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.platzi.model.SocialMedia;
 import com.platzi.model.Teacher;
+import com.platzi.model.TeacherSocialMedia;
+
 
 public class SocialMediaDaoImpl extends  AbstractSession implements SocialMediaDao {
 
@@ -15,7 +17,7 @@ public class SocialMediaDaoImpl extends  AbstractSession implements SocialMediaD
 	}
 
 	@Override
-	public List<SocialMedia> findAllTeachers() {
+	public List<SocialMedia> findAllSocialmedia() {
 		
 		return getSession().createQuery("from SocialMedia").list();
 	}
@@ -49,5 +51,31 @@ public class SocialMediaDaoImpl extends  AbstractSession implements SocialMediaD
 		return getSession().get(SocialMedia.class, idSocialMedia);
 	
 	}
+
+	@Override
+	public TeacherSocialMedia FindSocialMediaByIdAndName(Long id, String nickname) {
+		List <Object[]> objects = getSession().createQuery(
+				"from TeacherSocialMedia tsm join tsm.socialmMedia sm "
+						+ "where sm.idSocialMedia :idSocialMedia and tsm.nickname = :nickname")
+				.setParameter("idSocialMedia", id)
+				.setParameter("nickname", nickname).list();
+
+		if (objects.size()>0) {
+			for (Object[] objects2 : objects) {
+				for (Object object : objects2) {
+					if (object instanceof TeacherSocialMedia) {
+						return (TeacherSocialMedia)object;
+
+
+					}
+
+				}
+
+			}
+		}return null;
+		}
+
+
+
 
 }

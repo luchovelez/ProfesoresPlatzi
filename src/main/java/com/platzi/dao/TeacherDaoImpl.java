@@ -1,11 +1,13 @@
 package com.platzi.dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 
 import org.hibernate.Session;
 
 import com.platzi.model.Teacher;
+import com.platzi.model.TeacherSocialMedia;
 
 
 
@@ -47,6 +49,14 @@ public class TeacherDaoImpl extends  AbstractSession implements TeacherDao{
 	public void deleteTeacherById(Long idTeacher) {
 		Teacher teacher = findById(idTeacher);
 		if(teacher!=null) {
+			
+			Iterator<TeacherSocialMedia> i = teacher.getTeacherSocialMedia().iterator();
+			while(i.hasNext()) {
+				TeacherSocialMedia teacherSocialMedia = i.next();
+				i.remove();
+				getSession().delete(teacherSocialMedia);
+			}
+			teacher.getTeacherSocialMedia().clear();
 			getSession().delete(teacher);
 		}
 	
