@@ -3,14 +3,18 @@ package com.platzi.dao;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.transaction.Transactional;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import com.platzi.model.Teacher;
 import com.platzi.model.TeacherSocialMedia;
 
 
 
+@Repository
+@Transactional
 public class TeacherDaoImpl extends  AbstractSession implements TeacherDao{
 
 

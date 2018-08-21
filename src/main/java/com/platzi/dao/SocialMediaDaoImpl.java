@@ -1,12 +1,13 @@
 package com.platzi.dao;
 
 import java.util.List;
-
+import javax.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 import com.platzi.model.SocialMedia;
-import com.platzi.model.Teacher;
 import com.platzi.model.TeacherSocialMedia;
 
-
+@Repository
+@Transactional
 public class SocialMediaDaoImpl extends  AbstractSession implements SocialMediaDao {
 
 	@Override

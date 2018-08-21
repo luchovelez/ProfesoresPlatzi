@@ -2,8 +2,15 @@ package com.platzi.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
 import com.platzi.model.Course;
 
+
+@Repository
+@Transactional
 
 public class CourseDaoImpl extends  AbstractSession implements CourseDao {
 
